@@ -1,6 +1,21 @@
+html, body{
+    margin: 0;
+    padding: 0;
+}
 body{
     background-color:rgb(224, 224, 224);
+    font: 90% Roboto, Arial, sans-serif;
+    font-weight: 300;
 }
+p{
+    padding: 0 10px;
+    line-height: 1.8;
+}
+ul li{
+    padding-right: 10px;
+    line-height: 1.6;
+}
+
 hr{
     border-style: dotted none none;
     border-color: rgb(170, 255, 191);
@@ -9,7 +24,50 @@ hr{
     width: 10%;
 
 }
+/* Div Formatting */
+div#header{
+    position: relative;
+}
 
+div#header h1{
+    height: 80px;
+    line-height: 80px;
+    margin: 0;
+    padding-left: 10px;
+
+}
+
+div#navigation{
+    float: left;
+    width: 200px;
+}
+
+div#navigation li{
+    list-style: none;
+}
+
+div#extra{
+    float: left;
+    clear: left;
+    width: 200px;
+}
+
+div#footer{
+    clear: both;
+    width: 100%;
+}
+
+div#wrapper{
+    float: right;
+    width: 100%;
+    margin-left: -200px;
+}
+
+div#content{
+    margin-left: 200px;
+}
+
+/* Image Formatting */
 img.teelogo{
     height: 50%;
     width: 50%;
