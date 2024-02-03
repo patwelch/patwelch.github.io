@@ -1,16 +1,31 @@
 html, body{
-    margin: 0;
-    padding: 0;
+    height: 25%;
+}
+
+html{
+    display: table;
+    margin: auto;
 }
 body{
-    background-color:rgb(224, 224, 224);
-    font: 90% Roboto, Arial, sans-serif;
+    background-color:rgb(243, 243, 243);
+    font-family: 'Roboto Slab', Arial, sans-serif;
     font-weight: 300;
+    font-size: 20px;
+    display: table-cell;
+    vertical-align: middle;
+
+}
+.bodycontainer{
+    display: flex;
 }
 p{
     padding: 0 10px;
     line-height: 1.8;
 }
+p.navigationtitle{
+    font-weight: bold;
+}
+
 ul li{
     padding-right: 10px;
     line-height: 1.6;
@@ -25,28 +40,35 @@ hr{
 
 }
 /* Div Formatting */
-div#header{
+div#header {
+    display: flex;
     position: relative;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 20px;
 }
 
-div#header h1{
-    height: 80px;
-    line-height: 80px;
+div#header h1 {
+    line-height: 50px;
     margin: 0;
     padding-left: 10px;
-
+    margin-top: 20px;
+    display: inline-flex;
+    font-family: 'Roboto Slab', serif;
+    text-align: center;
 }
 
-div#navigation{
-    float: left;
-    width: 200px;
+div#navigation {
+    width: 33%;
+    background-color: blue;
 }
 
-div#navigation li{
+div#navigation li {
     list-style: none;
+    background-color: crimson;
 }
 
-div#extra{
+div#extra {
     float: left;
     clear: left;
     width: 200px;
@@ -58,16 +80,25 @@ div#footer{
 }
 
 div#wrapper{
-    float: right;
-    width: 100%;
+    width: 66%;
     margin-left: -200px;
+    background-color: aquamarine;
 }
 
 div#content{
-    margin-left: 200px;
+    background-color: forestgreen;
 }
 
 /* Image Formatting */
+img#headshot{
+    height: 150px;
+    width: 150px;
+    float: left;
+    padding-right: 10px;
+    display: flex;
+    background-color: chocolate;
+}
+
 img.teelogo{
     height: 50%;
     width: 50%;
@@ -90,5 +121,5 @@ img.xeliologo{
 }
 h1, h3{
 
-    color: #66bfbf;
+    color: #3e7397;
 }

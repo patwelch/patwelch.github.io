@@ -5,112 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patrick's Professional Site</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
 </head>
 <body>
 <div id="container">
     <div id="header">
-        <h1>Header Section</h1>
+        <img id="headshot" src="/images/pw_headshot.webp">
+        <h1>The Professional Development Page of Patrick Welch</h1>
     </div>
-    <div id="wrapper">
-        <div id="content">
-            <p>Content section, links to outher HTML</p>
+    <div class="bodycontainer">
+        <div id="navigation">
+            <p class="navigationtitle">Navigation</p>
+            <ul>
+                <li><a href="/pages/home.html">Home</a></li>
+                <li><a href="/pages/resume.html">Resume</a></li>
+                <li><a href="/pages/projects.html">Projects</a></li>
+                <li><a href="/pages/reading.html">Reading</a></li>
+            </ul>
+        </div>
+        <div id="wrapper">
+            <div id="content">
+            </div>
         </div>
     </div>
-    <div id="navigation">
-        <p>Nav Menu</p>
-        <ul>
-            <li>one</li>
-            <li>two</li>
-            <li>three</li>
-        </ul>
-    </div>
-    <div id="extra">
-        Extra section on the left, maybe move this above navi, shrink and use for photo/contact?
-    </div>
+        <div id="extra">
+            Extra section on the left, maybe move this above navi, shrink and use for photo/contact?
+        </div>
     <div id="footer">
         <p>Footer</p>
     </div>
 </div>
-<script type="text/javascript">AddFillerLink("content", "navigation", "extra")</script>
-</body>
-
-
-<!--<body>
-    <table>
-        <tr>
-            <td>    
-                <img class="teelogo" src="images/tee_Logo_Clear.webp" alt="TEE Logo">
-            </td>
-            <td>    
-                <h1>Patrick Welch</h1>
-                <br>
-                <em>Energy Professional</em>
-            </td>
-
-
-        </tr>
-    </table>
-    <p>
-        Links
-    </p>
-    <hr>
-    <h3>Education</h3>
-    <p>University of Maryland</p>
-    <br><hr>
-    <P>Work Experience</P>
-    <table>
-        <thead>
-            <tr>
-                <th>Dates</th>
-                <th>Work</th>
-            </tr>
-        </thead>
-
-        <tbody>
-        <tr>
-            <td>2012-2018</td>
-            <td>EnerNOC/Enel X</td>
-        </tr>
-        <tr>
-            <td>2019-2011</td>
-            <td>X-ELIO</td>
-        </tr>
-        </tbody>
-
-        <tfoot>
-
-        </tfoot>
-    </table>
-    <hr>
-    <h3>Skills</h3>
-    <table>
-        <thead>
-
-        </thead>
-
-        <tbody>
-        <tr>
-            <td>Word</td>
-            <td>⭐⭐⭐⭐⭐</td>
-        </tr>
-        <tr>
-            <td>Excel</td>
-            <td>⭐⭐⭐⭐⭐</td>
-        </tr>
-        <tr>
-            <td>Python</td>
-            <td>⭐⭐⭐</td>
-        </tr>
-        </tbody>
-
-        <tfoot>
-
-        </tfoot>
-    </table>
-    <br>
-    <a href="contact.html">Contact Me</a>
+<!-- <script type="text/javascript">AddFillerLink("content", "navigation", "extra")</script> -->
 
 </body>
--->
+<script>
+$(function() {
+    $("#navigation li a").click(function(e) {
+      e.preventDefault(); //To prevent the default anchor tag behaviour
+      var url = this.href;
+      $("#content").load(url);
+    });
+  });
+
+$("#content").load("/pages/home.html");
+</script>
 </html>
