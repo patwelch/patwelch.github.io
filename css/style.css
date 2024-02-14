@@ -77,6 +77,10 @@ div#extra {
 div#footer{
     clear: both;
     width: 100%;
+    vertical-align: middle;
+    background-color: darkgreen;
+    text-align: center;
+    font-style: italic;
 }
 
 div#wrapper{
