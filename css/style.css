@@ -1,129 +1,598 @@
-html, body{
-    height: 25%;
+/* --- General & Resets --- */
+:root {
+    --primary-color: #2A6F47;
+    --primary-color-dark: #1E5133; /* For hover states */
+    --light-gray: #f8f9fa;
+    --medium-gray: #e9ecef;
+    --dark-gray: #343a40;
+    --text-color: #212529;
+    --card-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-html{
-    display: table;
-    margin: auto;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-body{
-    background-color:rgb(243, 243, 243);
-    font-family: 'Roboto Slab', Arial, sans-serif;
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
     font-weight: 300;
-    font-size: 20px;
-    display: table-cell;
-    vertical-align: middle;
-
+    font-size: 18px;
+    line-height: 1.7;
+    background-color: var(--light-gray);
+    color: var(--text-color);
 }
-.bodycontainer{
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    color: var(--dark-gray);
+    margin-bottom: 0.5em;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-color-dark); /* A darker shade of the primary color */
+    text-decoration: underline;
+}
+
+
+/* --- Main Layout --- */
+#container {
+    max-width: 1200px;
+    margin: 40px auto; /* Center the container with space on top/bottom */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden; /* Important for containing border-radius */
+}
+
+.main-layout {
     display: flex;
 }
-p{
-    padding: 0 10px;
-    line-height: 1.8;
+
+/* --- Sidebar / Profile Section --- */
+#sidebar {
+    flex: 0 0 280px; /* Do not grow, do not shrink, base width of 280px */
+    background-color: #ffffff;
+    padding: 40px 20px;
+    border-right: 1px solid var(--medium-gray);
+    text-align: center;
 }
-p.navigationtitle{
+
+.profile #headshot {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Prevents image from stretching */
+    border: 4px solid var(--medium-gray);
+    margin-bottom: 20px;
+}
+
+.profile .profile-name {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.profile .profile-title {
+    font-size: 1rem;
+    color: #6c757d; /* A muted text color */
+    margin-bottom: 30px;
+}
+
+/* --- Social Links (in Sidebar) --- */
+/* (Add this to the bottom of your style.css file) */
+
+.social-links {
+    text-align: center;
+    margin: 25px 0; /* Creates space above and below the icons */
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Space between each icon */
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Makes the link circular */
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    font-size: 20px; /* Controls the size of the icon inside */
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    transform: scale(1.1) translateY(-2px); /* A subtle pop effect on hover */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* --- Navigation --- */
+#navigation ul {
+    list-style: none;
+}
+
+#navigation li a {
+    display: block; /* Makes the entire area clickable */
+    padding: 12px 20px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: var(--dark-gray);
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#navigation li a:hover {
+    background-color: var(--light-gray);
+    color: var(--primary-color);
+}
+
+/* Style for the currently active page link */
+#navigation li a.active {
+    background-color: var(--primary-color);
+    color: #ffffff;
     font-weight: bold;
 }
 
-ul li{
-    padding-right: 10px;
-    line-height: 1.6;
+
+/* --- Main Content Area --- */
+#main-content {
+    flex: 1; /* This makes the main content take up the remaining space */
+    padding: 40px;
+    background-color: #ffffff;
 }
 
-hr{
-    border-style: dotted none none;
-    border-color: rgb(170, 255, 191);
-    border-width: 5px;
-    height: 1px;
-    width: 10%;
-
-}
-/* Div Formatting */
-div#header {
-    display: flex;
-    position: relative;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-bottom: 20px;
+/* This is the div where your content is loaded */
+#content {
+    /* You can add specific styling here for the loaded content if needed */
 }
 
-div#header h1 {
-    line-height: 50px;
-    margin: 0;
-    padding-left: 10px;
-    margin-top: 20px;
-    display: inline-flex;
-    font-family: 'Roboto Slab', serif;
-    text-align: center;
-}
-
-div#navigation {
-    width: 33%;
-    background-color: blue;
-}
-
-div#navigation li {
-    list-style: none;
-    background-color: crimson;
-}
-
-div#extra {
-    float: left;
-    clear: left;
-    width: 200px;
-}
-
-div#footer{
+/* --- Footer --- */
+#footer {
     clear: both;
     width: 100%;
-    vertical-align: middle;
-    background-color: darkgreen;
+    padding: 20px;
+    background-color: var(--dark-gray);
+    color: var(--light-gray);
     text-align: center;
     font-style: italic;
+    font-size: 0.9rem;
 }
 
-div#wrapper{
-    width: 66%;
-    margin-left: -200px;
-    background-color: aquamarine;
+
+/* --- Responsive Design for smaller screens --- */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
+    #container {
+        margin: 0;
+        border-radius: 0;
+    }
+    
+    .main-layout {
+        flex-direction: column; /* Stack sidebar and main content vertically */
+    }
+
+    #sidebar {
+        flex-basis: auto; /* Let the sidebar's height be determined by its content */
+        border-right: none;
+        border-bottom: 1px solid var(--medium-gray);
+    }
+
+    #main-content {
+        padding: 20px;
+    }
 }
 
-div#content{
-    background-color: forestgreen;
+/* --- Home Page Specific Styles --- */
+/* (Add this to the bottom of your style.css file) */
+
+/* Inherits .section-divider style from resume.css, no need to redefine */
+
+.hero-section {
+    text-align: center;
+    padding: 40px 0;
+    margin-bottom: 30px;
 }
 
-/* Image Formatting */
-img#headshot{
-    height: 150px;
-    width: 150px;
-    float: left;
-    padding-right: 10px;
+.hero-headline {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.hero-subheadline {
+    font-size: 1.2rem;
+    color: #6c757d;
+    max-width: 65ch; /* Improves readability by limiting line length */
+    margin: 0 auto 30px auto; /* Centers the text block */
+}
+
+/* --- Call-to-Action Buttons --- */
+.cta-buttons {
     display: flex;
-    background-color: chocolate;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows buttons to stack on small screens */
+    gap: 20px;
 }
 
-img.teelogo{
-    height: 50%;
-    width: 50%;
-
+.btn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    border: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
 }
-img.enelxlogo{
-    height: 50%;
-    width: 50%;
 
+/* Primary button style (filled) */
+.btn-cta.primary {
+    background-color: var(--primary-color);
+    color: #ffffff;
 }
-img.cdglogo{
-    height: 50%;
-    width: 50%;
-
+.btn-cta.primary:hover {
+    background-color: var(--primary-color-dark);
+    border-color: var(--primary-color-dark);
+    transform: translateY(-3px);
 }
-img.xeliologo{
-    height: 50%;
-    width: 50%;
 
+/* Secondary button style (outline) */
+.btn-cta.secondary {
+    background-color: transparent;
+    color: var(--primary-color);
 }
-h1, h3{
+.btn-cta.secondary:hover {
+    background-color: var(--primary-color-dark);;
+    color: #ffffff;
+    transform: translateY(-3px);
+}
 
-    color: #3e7397;
+
+/* --- About Me Snippet Section --- */
+.about-snippet {
+    margin: 40px 0;
+    max-width: 75ch; /* Limit width for readability */
+}
+
+.about-snippet h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.about-snippet p {
+    margin-bottom: 1em;
+}
+
+
+/* --- Responsive adjustments for Home Page on small screens --- */
+@media (max-width: 768px) {
+    .hero-headline {
+        font-size: 2.2rem;
+    }
+    .hero-subheadline {
+        font-size: 1.1rem;
+    }
+}
+
+/* --- Resume Page Specific Styles --- */
+
+/* --- Header & Download Button --- */
+.resume-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Allows button to wrap on small screens */
+    gap: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: var(--primary-color-dark);
+    color: #ffffff; /* Keep text color white on hover */
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+/* --- General Section Formatting --- */
+.resume-section {
+    margin: 40px 0;
+}
+
+.resume-section h2 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--medium-gray);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+.section-divider {
+    border: 0;
+    height: 1px;
+    background-color: var(--medium-gray);
+}
+
+
+/* --- Experience & Education Entries --- */
+.job-entry, .education-entry {
+    margin-bottom: 30px;
+}
+
+.job-entry h3, .education-entry h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.company-info, .school-info {
+    color: #6c757d;
+    margin-bottom: 15px;
+}
+
+.job-entry ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.job-entry li {
+    margin-bottom: 10px;
+}
+
+/* --- Skills Section --- */
+.skills-grid {
+    display: grid;
+    /* Creates responsive columns: they will be at least 250px wide, 
+       and more will fit on the line as the screen gets wider */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.skill-category h4 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    font-weight: 400; /* Lighter weight for sub-headings */
+}
+
+.skill-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-item {
+    background-color: var(--light-gray);
+    border: 1px solid var(--medium-gray);
+    padding: 6px 14px;
+    border-radius: 20px; /* Pill shape */
+    font-size: 0.9rem;
+    color: var(--dark-gray);
+}
+
+/* --- Projects Page Specific Styles --- */
+
+.page-intro {
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin-bottom: 40px;
+    max-width: 80ch; /* Limits the width for better readability */
+}
+
+.project-category {
+    margin-bottom: 50px;
+}
+
+.project-category h2 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--medium-gray);
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+/* --- Project Grid Layout --- */
+.project-grid {
+    display: grid;
+    /* This creates a responsive grid without media queries.
+       Columns will be a minimum of 320px, and the grid will fit
+       as many as possible per row. */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+/* --- Project Card Styling --- */
+.project-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border: 1px solid var(--medium-gray);
+    overflow: hidden; /* Keeps the image inside the rounded corners */
+    display: flex;
+    flex-direction: column; /* Stacks image, info, and links vertically */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow); /* Re-use the nice shadow from our root variables */
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
+.project-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* This is key! It makes the info section fill available space */
+}
+
+.project-title {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.project-description {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Pushes tags and links to the bottom */
+}
+
+/* --- Tags & Links --- */
+.project-tags {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    background-color: var(--light-gray);
+    border: 1px solid var(--medium-gray);
+    padding: 5px 12px;
+    border-radius: 15px; /* Pill shape */
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+
+.project-links {
+    display: flex;
+    gap: 10px;
+    margin-top: auto; /* Pushes the links to the very bottom of the card */
+}
+
+.btn-project {
+    display: inline-flex; /* Helps align icon and text */
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-project:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Special style for a more prominent "live" button */
+.btn-project.live {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+.btn-project.live:hover {
+    background-color: var(--primary-color-dark);
+    border-color: var(--primary-color-dark);
+}
+
+/* --- Reading Page Specific Styles --- */
+
+/* Inherits .page-intro style from projects.css, no need to redefine */
+
+.reading-list {
+    margin-top: 30px;
+}
+
+.reading-item {
+    padding: 25px 0;
+    border-bottom: 1px solid var(--medium-gray);
+    transition: background-color 0.3s ease;
+}
+
+.reading-item:last-child {
+    border-bottom: none; /* Remove the border from the very last item */
+}
+
+/* Optional: a subtle hover effect for the entire entry */
+.reading-item:hover {
+    /* You can add a subtle background color if you like */
+    background-color: #fafafa; 
+}
+
+.reading-title {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.reading-title i {
+    color: var(--primary-color);
+    font-size: 1.1rem; /* Make icon slightly smaller than text */
+    margin-right: 12px;
+    width: 20px; /* Ensures text alignment is consistent */
+    text-align: center;
+}
+
+.reading-meta {
+    font-size: 1rem;
+    color: #6c757d;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.reading-description {
+    margin-bottom: 20px;
+}
+
+.btn-reading {
+    display: inline-block;
+    padding: 8px 18px;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-reading:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    text-decoration: none;
+    transform: translateY(-2px);
 }

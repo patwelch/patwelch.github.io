@@ -4,53 +4,98 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patrick's Professional Site</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <title>Patrick Welch | Professional Portfolio</title>
+    
     <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Source+Sans+Pro:wght@300;400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-<div id="container">
-    <div id="header">
-        <img id="headshot" src="/images/pw_headshot.webp">
-        <h1>The Professional Development Page of Patrick Welch</h1>
-    </div>
-    <div class="bodycontainer">
-        <div id="navigation">
-            <p class="navigationtitle">Navigation</p>
-            <ul>
-                <li><a href="/pages/home.html">Home</a></li>
-                <li><a href="/pages/resume.html">Resume</a></li>
-                <li><a href="/pages/projects.html">Projects</a></li>
-                <li><a href="/pages/reading.html">Reading</a></li>
-            </ul>
-            <div id="extra">
-                Extra section on the left, maybe move this above navi, shrink and use for photo/contact?
-            </div>
-        </div>
-        <div id="wrapper">
-            <div id="content">
-            </div>
-        </div>
-    </div>
-    <div id="footer">
-        <p>"I try all things. I achieve what I can."</p>
-    </div>
-</div>
-<!-- <script type="text/javascript">AddFillerLink("content", "navigation", "extra")</script> -->
 
-</body>
+<div id="container">
+    
+    <!-- The main layout is now a sidebar and a content area -->
+    <div class="main-layout">
+
+        <aside id="sidebar">
+            <div class="profile">
+                <img id="headshot" src="/images/pw_headshot.webp" alt="A headshot of Patrick Welch">
+                <h1 class="profile-name">Patrick Welch</h1>
+                <p class="profile-title">Energy Professional & Lifelong Learner</p>
+            </div>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/patrickwelchjr/" target="_blank" aria-label="Link to LinkedIn Profile">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/patwelch" target="_blank" aria-label="Link to GitHub Profile">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="mailto:pat.welchjr@gmail.com" aria-label="Send an Email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+        </div>
+            
+            <nav id="navigation">
+                <ul>
+                    <!-- Added a class to the first link to style the "active" page on load -->
+                    <li><a href="/pages/home.html" class="active">Home</a></li>
+                    <li><a href="/pages/resume.html">Resume</a></li>
+                    <li><a href="/pages/projects.html">Projects</a></li>
+                    <li><a href="/pages/reading.html">Reading</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN: The main content will be loaded here -->
+        <main id="main-content">
+            <!-- This div is the target for your jQuery content loading -->
+            <div id="content">
+                <!-- Content from home.html will be loaded here initially -->
+            </div>
+        </main>
+
+    </div>
+
+    <!-- FOOTER: Sits at the bottom of the container -->
+    <footer id="footer">
+        <p>"I try all things. I achieve what I can." - Herman Melville</p>
+    </footer>
+
+</div>
+
 <script>
 $(function() {
-    $("#navigation li a").click(function(e) {
-      e.preventDefault(); //To prevent the default anchor tag behaviour
-      var url = this.href;
-      $("#content").load(url);
-    });
-  });
+    // Load the home page content by default
+    $("#content").load("/pages/home.html");
 
-$("#content").load("/pages/home.html");
+    // Handle navigation clicks
+    $("#navigation li a").click(function(e) {
+      e.preventDefault(); // Prevent default link behavior
+      
+      // Remove 'active' class from all links
+      $("#navigation li a").removeClass("active");
+      // Add 'active' class to the clicked link
+      $(this).addClass("active");
+
+      var url = this.href;
+      // Use a fade out/in effect for a smoother transition
+      $("#content").fadeOut(200, function() {
+          $(this).load(url, function() {
+              $(this).fadeIn(200);
+          });
+      });
+    });
+});
 </script>
+
+</body>
 </html>
