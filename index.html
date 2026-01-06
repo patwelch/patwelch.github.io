@@ -76,21 +76,21 @@ $(function() {
     $("#content").load("/pages/home.html");
 
     // Handle navigation clicks
-    $("#navigation li a").click(function(e) {
-      e.preventDefault(); // Prevent default link behavior
+    $(document).on("click", "#navigation li a, .btn-cta", function(e) {
+        e.preventDefault(); // Prevent default link behavior
       
-      // Remove 'active' class from all links
-      $("#navigation li a").removeClass("active");
-      // Add 'active' class to the clicked link
-      $(this).addClass("active");
+        var url = $(this).attr("href");
+        // Remove 'active' class from all links
+        $("#navigation li a").removeClass("active");
+        // Add 'active' class to the sidebar link that matches the clicked URL
+        $("#navigation li a[href='" + url + "']").addClass("active");
 
-      var url = this.href;
-      // Use a fade out/in effect for a smoother transition
-      $("#content").fadeOut(200, function() {
-          $(this).load(url, function() {
-              $(this).fadeIn(200);
-          });
-      });
+        // Use a fade out/in effect for a smoother transition
+        $("#content").fadeOut(200, function() {
+            $(this).load(url, function() {
+                $(this).fadeIn(200);
+            });
+        });
     });
 });
 </script>

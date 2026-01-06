@@ -472,7 +472,7 @@ a:hover {
 .project-description {
     font-size: 1rem;
     margin-bottom: 20px;
-    flex-grow: 1; /* Pushes tags and links to the bottom */
+    /*flex-grow: 1;  Pushes tags and links to the bottom */
 }
 
 /* --- Tags & Links --- */
@@ -481,6 +481,19 @@ a:hover {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+}
+
+.project-details-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    flex-grow: 1;
+}
+
+.project-details-list li {
+    margin-bottom: 5px;
 }
 
 .tag {
